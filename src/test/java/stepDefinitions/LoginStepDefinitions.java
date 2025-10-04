@@ -30,9 +30,6 @@ public class LoginStepDefinitions {
 	public void driverInitialization() {
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("--incognito");
-		// options.addArguments("--headless=new"); // or "--headless" for older Chrome
-		// options.addArguments("--no-sandbox");
-		// options.addArguments("--disable-dev-shm-usage");
 		options.addArguments("--disable-gpu");
 		options.addArguments("--remote-allow-origins=*");
 		options.addArguments("--user-data-dir=/tmp/chrome-user-data-" + System.currentTimeMillis());
@@ -40,7 +37,6 @@ public class LoginStepDefinitions {
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		loginPage = new LoginPage(driver);
-		// return driver;
 	}
 
 	@Before
@@ -71,12 +67,12 @@ public class LoginStepDefinitions {
 
 	@Then("I am able to login")
 	public void i_am_able_to_login() throws IOException {
-		Assert.assertEquals(loginPage.getTitle(),expectedTitle);
+		Assert.assertEquals(loginPage.getTitle(), expectedTitle);
 	}
 
 	@Given("I have entered invalid {string} and {string}")
 	public void i_have_entered_invalid_and(String username, String password) {
-		loginPage.enterCredentials(username,password);
+		loginPage.enterCredentials(username, password);
 	}
 
 	@Then("I should see error message {string}")
@@ -87,7 +83,9 @@ public class LoginStepDefinitions {
 
 	@After
 	public void tearDown() {
-		driver.quit();
+		if (driver != null) {
+			driver.quit();
+		}
 	}
 
 }

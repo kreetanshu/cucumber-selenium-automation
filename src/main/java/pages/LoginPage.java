@@ -53,7 +53,7 @@ public class LoginPage {
 	public String getTitle() throws IOException {
 		TakesScreenshot ts = (TakesScreenshot) driver;
 		File src = ts.getScreenshotAs(OutputType.FILE);
-		File dest = new File(System.getProperty("user.directory") + File.separator + "Screenshots" + File.separator
+		File dest = new File(System.getProperty("user.dir") + File.separator + "Screenshots" + File.separator
 				+ System.currentTimeMillis() + ".png");
 		FileUtils.copyFile(src, dest);
 		return driver.getTitle();
