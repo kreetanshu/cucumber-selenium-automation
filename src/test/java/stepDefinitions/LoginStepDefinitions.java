@@ -21,9 +21,9 @@ import io.cucumber.java.en.Then;
 
 public class LoginStepDefinitions {
 
-	WebDriver driver;
-	Properties prop;
-	LoginPage loginPage;
+	private WebDriver driver;
+	private Properties prop;
+	private LoginPage loginPage;
 	private final String expectedTitle = "Swag Labs";
 
 	@Before
