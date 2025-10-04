@@ -1,1 +1,4 @@
 /target/
+/Screenshots
+/test-output
+.settings
